@@ -1,0 +1,50 @@
+
+<body>
+<!-- partial:index.partial.html -->
+<header>
+    <div class="container">
+        <h3 data-bind="text: appTitle"></h3>
+        <p data-bind="text: appSubTitle"></p>
+    </div>
+</header>
+<div class="container">
+    <h2 class="title align-center">Items list</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Each Price</th>
+                <th>Quantity</th>
+                <th>Net Price</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: items">
+            <tr>
+                <td><select data-bind="options: $root.jsonData()[0].vegetables, value: item, optionsText: 'productname'"></select></td>
+              <td class="align-center">$<span data-bind="text: item().price"></span></td>
+                <td><select class="align-center" data-bind="options: $root.jsonData()[0].quantity, value: quantity, optionsText: 'quantity'"></select></td>
+                <td class="align-center bold">$<span data-bind="text: total"></span></td>
+                <td><a href="#" data-bind="click: $root.removeItem">Remove</a></td>
+               
+            </tr>
+        </tbody>
+        <tfoot data-bind="visible: totalAmount() > 0">
+            <tr>
+                <td class="align-right" colspan="3">Total</td>
+                <td class="align-center"><span>$</span><span data-bind="text: totalAmount()"></span></td>
+                <td></td>
+            </tr>
+        </tfoot>
+    </table><button class="btn" data-bind="click: addNewItem">Add New Item</button></div>
+<footer>
+    <div class="container">
+        <p>&copy 2018. <span data-bind="text: fullAppName"></span></p>
+    </div>
+</footer>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>
